@@ -3,28 +3,34 @@ package com.javarush.service;
 import com.javarush.dao.BookDAO;
 import com.javarush.entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
 public class BookServiceImpl implements BookService {
 
     @Autowired
     private BookDAO bookDAO;
 
-
-    public List<Book> getCustomers() {
+    @Transactional
+    public List<Book> getBooks() {
         return bookDAO.getBooks();
     }
 
-    public void saveCustomer(Book book) {
+    @Transactional
+    public void saveBook(Book book) {
         bookDAO.saveBook(book);
     }
 
-    public Book getCustomer(int id) {
+    @Transactional
+    public Book getBook(int id) {
         return bookDAO.getBook(id);
     }
 
-    public void deleteCustomer(int id) {
+    @Transactional
+    public void deleteBook(int id) {
         bookDAO.deleteBook(id);
     }
 }

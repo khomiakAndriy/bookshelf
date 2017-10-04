@@ -27,9 +27,19 @@ public class Book {
     private int printYear;
 
     @Column(name = "read_already")
-    private boolean readAlready = false;
+    private boolean readAlready;
 
     public Book() {
+        this.readAlready = false;
+    }
+
+    public Book(String title, String description, String author, String isbn, int printYear) {
+        this.title = title;
+        this.description = description;
+        this.author = author;
+        this.isbn = isbn;
+        this.printYear = printYear;
+        this.readAlready = false;
     }
 
     @Override
