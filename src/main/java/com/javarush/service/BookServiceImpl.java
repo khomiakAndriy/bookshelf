@@ -33,4 +33,14 @@ public class BookServiceImpl implements BookService {
     public void deleteBook(int id) {
         bookDAO.deleteBook(id);
     }
+
+    @Transactional
+    public List<Book> getBooksByPage(int pageid, int total) {
+        return bookDAO.getBooksByPage(pageid, total);
+    }
+
+    @Transactional
+    public List<Book> searchBooks(String searchText) {
+        return bookDAO.searchBooks(searchText);
+    }
 }

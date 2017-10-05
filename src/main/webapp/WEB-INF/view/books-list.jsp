@@ -14,17 +14,29 @@
 <body>
 <div id="wrapper">
     <div id="header">
-        <h2> Bookshelf</h2>
+        <h2>Bookshelf</h2>
     </div>
 </div>
 <div id="container">
     <div id="content">
 
-        <input type="button" value="Add book"
-               onclick="window.location.href= 'showFormForAdd'; return false;"
-               class="add-button"
-        />
+        <%--Add button and search panel--%>
+        <table>
+            <tr><input type="button" value="Add book"
+                       onclick="window.location.href= '/book/showFormForAdd'; return false;"
+                       class="add-button"
+            />
+            </tr>
+            <tr>
+                <form action="/book/search" method="get">
+                    <input type="text" name="searchText" placeholder="Search here..." required>
+                    <button type="submit">Search</button>
+                </form>
+            </tr>
+        </table>
 
+
+        <%--Booklist--%>
         <table>
             <tr>
                 <th>Title</th>
@@ -54,7 +66,7 @@
                     <td> ${book.author}</td>
                     <td> ${book.isbn}</td>
                     <td> ${book.printYear}</td>
-                        ${book.readAlready}
+
                     <td>
                         <a href="${changeStatusLink}"
                            onclick="if (!(confirm('Have you read this book??'))) return false">${book.readAlready}</a>
@@ -71,6 +83,9 @@
     </div>
 </div>
 
+<a href="/book/list/1">1</a>
+<a href="/book/list/2">2</a>
+<a href="/book/list/3">3</a>
 
 </body>
 </html>

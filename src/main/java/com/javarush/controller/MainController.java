@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -18,15 +20,27 @@ public class MainController {
     private BookService bookService;
 
 
-    @RequestMapping("/list")
-    public String listBook(Model model){
-        // get customer from the dao
-        List<Book> books = bookService.getBooks();
+//    @RequestMapping("/list/{pageid}")
+//    public String listBook(Model model){
+//        // get customer from the dao
+//        List<Book> books = bookService.getBooks();
+//
+//        // add the customers to the model
+//        model.addAttribute("books", books);
+//
+//        return "books-list";
+//    }
 
-        // add the customers to the model
-        model.addAttribute("books", books);
+    @RequestMapping(value="/list/{pageid}")
+    public ModelAndView list(@PathVariable int pageid){
+        int total=10;
+        if(pageid==1){}
+        else{
+            pageid=(pageid-1)*total+1;
+        }
+        List<Book> books = bookService.getBooksByPage(pageid,total);
 
-        return "books-list";
+        return new ModelAndView("books-list","books", books);
     }
 
 
@@ -38,11 +52,21 @@ public class MainController {
         return "book-form";
     }
 
+    @GetMapping("/search")
+    public String search(@RequestParam("searchText") String searchText, Model model){
+        List<Book> books = bookService.searchBooks(searchText);
+
+        System.out.println(books.size());
+        model.addAttribute("books", books);
+
+        return "books-list";
+    }
+
     @PostMapping("/saveBook")
     public String saveBook(@ModelAttribute("book ") Book book){
 
         bookService.saveBook(book);
-        return "redirect:/book/list";
+        return "redirect:/book/list/1";
     }
 
     @PostMapping("/updateBook")
@@ -50,14 +74,14 @@ public class MainController {
         book.setReadAlready(false);
 
         bookService.saveBook(book);
-        return "redirect:/book/list";
+        return "redirect:/book/list/1";
     }
 
     @GetMapping("/delete")
     public String deleteBook(@RequestParam("bookId") int id){
         bookService.deleteBook(id);
 
-        return "redirect:/book/list";
+        return "redirect:/book/list/1";
     }
 
     @GetMapping("/changeStatus")
@@ -66,7 +90,7 @@ public class MainController {
         book.setReadAlready(true);
         bookService.saveBook(book);
 
-        return "redirect:/book/list";
+        return "redirect:/book/list/1";
     }
 
     @GetMapping("/showFormForUpdate")

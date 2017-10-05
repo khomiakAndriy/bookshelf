@@ -45,4 +45,36 @@ public class BookDAOImpl implements BookDAO {
 
         query.executeUpdate();
     }
+
+    public List<Book> getBooksByPage(int pageid, int total) {
+
+        Session currentSession = sessionFactory.getCurrentSession();
+
+        Query<Book> query = currentSession.createQuery("from Book order by title", Book.class);
+        int from = pageid - 1;
+        int to = pageid + total - 1;
+
+
+        List<Book> books = query.getResultList();
+        int booksSize = books.size();
+
+        if (booksSize>to){
+            return books.subList(from, to);
+        } else {
+            return books.subList(from, booksSize);
+        }
+
+
+    }
+
+    public List<Book> searchBooks(String searchText) {
+        Session currentSession = sessionFactory.getCurrentSession();
+
+        String sql = "from Book where title like '%" + searchText + "%'";
+        Query<Book> query = currentSession.createQuery(sql, Book.class);
+
+        List<Book> books = query.getResultList();
+        return books;
+
+    }
 }

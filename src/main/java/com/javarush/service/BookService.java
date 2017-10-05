@@ -13,4 +13,8 @@ public interface BookService {
     public Book getBook(int id);
 
     public void deleteBook(int id);
+
+    public List<Book> getBooksByPage(int pageid, int total);
+
+    public List<Book> searchBooks(String searchText);
 }

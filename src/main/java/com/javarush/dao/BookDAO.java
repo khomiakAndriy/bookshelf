@@ -14,4 +14,7 @@ public interface BookDAO {
 
     public void deleteBook(int id);
 
+    public List<Book> getBooksByPage(int pageid, int total);
+
+    public List<Book> searchBooks(String searchText);
 }
