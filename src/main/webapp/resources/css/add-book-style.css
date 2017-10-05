@@ -13,7 +13,7 @@ label {
 }
 
 input {
-    width: 250px;
+    width: 95%;
     border: 1px solid #666;
     border-radius: 5px;
     padding: 4px;
@@ -30,7 +30,7 @@ input {
 
 table {
     border-style:none;
-    width:50%;
+    width:95%;
 }
 
 tr:nth-child(even) {background: #FFFFFF}

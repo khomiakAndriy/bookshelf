@@ -34,7 +34,7 @@
             </tr>
             <tr>
                 <td><label>Description:</label></td>
-                <td><form:input path="description"/></td>
+                <td style="height: 40px"><form:input path="description"/></td>
             </tr>
             <tr>
                 <td><label>Author:</label></td>
