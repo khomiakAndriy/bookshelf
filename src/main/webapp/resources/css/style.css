@@ -8,7 +8,7 @@ table {
     border-collapse:collapse;
     border-bottom:1px solid gray;
     font-family: Tahoma,Verdana,Segoe,sans-serif;
-    width:72%;
+    width:95%;
 }
 
 th {
@@ -47,7 +47,7 @@ tr:nth-child(odd) {background: #BBBBBB}
 }
 
 .form-wrapper {
-    width: 450px;
+    width: 95%;
     padding: 15px;
     margin: 150px auto 50px auto;
     background: #444;

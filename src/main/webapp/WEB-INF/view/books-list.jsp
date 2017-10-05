@@ -13,7 +13,7 @@
 </head>
 <body>
 <div id="wrapper">
-    <div id="header">
+    <div id="header" style="width: 95%">
         <h2>Bookshelf</h2>
     </div>
 </div>
@@ -27,6 +27,7 @@
                        class="add-button"
             />
             </tr>
+            <tr>    </tr>
             <tr>
                 <form action="/book/search" method="get">
                     <input type="text" name="searchText" placeholder="Search here..." required>
@@ -41,11 +42,11 @@
             <tr>
                 <th>Title</th>
                 <th>Description</th>
-                <th>Author</th>
-                <th>Isbn</th>
+                <th style="width: 120px">Author</th>
+                <th >Isbn</th>
                 <th>Print Year</th>
                 <th>Status</th>
-                <th>Action</th>
+                <th style="width: 100px">Action</th>
             </tr>
 
             <c:forEach var="book" items="${books}">
@@ -72,9 +73,7 @@
                            onclick="if (!(confirm('Have you read this book??'))) return false">${book.readAlready}</a>
                     </td>
                     <td>
-                        <a href="${updateLink}">Update</a>
-                        |
-                        <a href="${deleteLink}"
+                        <a href="${updateLink}">Update</a> | <a href="${deleteLink}"
                            onclick="if (!(confirm('Are you sure want to delete this book?'))) return false">Delete</a>
                     </td>
                 </tr>
@@ -86,6 +85,7 @@
 <a href="/book/list/1">1</a>
 <a href="/book/list/2">2</a>
 <a href="/book/list/3">3</a>
+<a href="/book/list/4">4</a>
 
 </body>
 </html>
