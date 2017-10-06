@@ -11,11 +11,11 @@
 
     <link type="text/css"
           rel="stylesheet"
-          href="${pageContext.request.contextPath}/resources/css/add-customer-style.css">
+          href="${pageContext.request.contextPath}/resources/css/add-book-style.css">
 </head>
 <body>
 <div id="wrapper">
-    <div id="header">
+    <div id="header" style="width: 850px">
         <h2>Bookshelf</h2>
 
     </div>
@@ -31,19 +31,19 @@
             <tbody>
             <tr>
                 <td><label>Title:</label></td>
-                <td><form:input path="title"/></td>
+                <td><form:input path="title" cssStyle="width: 700px"/></td>
             </tr>
             <tr>
                 <td><label>Description:</label></td>
-                <td style="height: 40px"><form:input path="description"/></td>
+                <td><form:textarea path="description" rows="3" cols="97"/></td>
             </tr>
             <tr>
                 <td><label>Isbn:</label></td>
-                <td><form:input path="isbn"/></td>
+                <td><form:input path="isbn" cssStyle="width: 700px"/></td>
             </tr>
             <tr>
                 <td><label>Print year:</label></td>
-                <td><form:input path="printYear"/></td>
+                <td><form:input path="printYear" cssStyle="width: 700px"/></td>
             </tr>
             <tr>
                 <td><label></label></td>
